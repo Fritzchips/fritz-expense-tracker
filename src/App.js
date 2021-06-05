@@ -16,7 +16,6 @@ function App() {
   useEffect(() => {
     if (expenseList) {
       localStorage.setItem("list", JSON.stringify(expenseList));
-      console.log("item was added");
     }
   }, [expenseList]);
 

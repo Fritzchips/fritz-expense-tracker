@@ -4,20 +4,14 @@ import Button from "react-bootstrap/Button";
 
 function TableOutPut({ expenseList, requestListModify }) {
   const callBackHandler = (e) => {
-    let childList = [...expenseList];
-    console.log("childfirst: ", childList);
-    /*  let index = childList.indexOf(e.currentTarget); */
-    console.log("index: ", e.currentTarget);
-    childList.splice(e.currentTarget, 1);
-    console.log("childlast: ", childList);
-    console.log("childlast: ", ...childList);
-    requestListModify([...childList]);
+    expenseList.splice(e, 1);
+    requestListModify([...expenseList]);
   };
 
   return (
     <>
       {expenseList ? (
-        expenseList.map((items) => (
+        expenseList.map((items, index) => (
           <React.Fragment key={items.id}>
             <tr>
               <td>{items.name}</td>
@@ -26,7 +20,10 @@ function TableOutPut({ expenseList, requestListModify }) {
               <td>$ {items.amount}</td>
               <td>{items.detail}</td>
               <td>
-                <Button variant="warning" onClick={callBackHandler}>
+                <Button
+                  variant="warning"
+                  onClick={() => callBackHandler(index)}
+                >
                   Delete
                 </Button>
               </td>
