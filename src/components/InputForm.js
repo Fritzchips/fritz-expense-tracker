@@ -8,6 +8,7 @@ import Button from "react-bootstrap/Button";
 function InputForm({ callBackAddItem }) {
   const blankForm = {
     id: Date.now(),
+    btnID: Math.random() * Date.now(),
     name: "",
     date: "",
     amount: "",
@@ -29,7 +30,7 @@ function InputForm({ callBackAddItem }) {
           <Form.Label>Name: </Form.Label>
           <Form.Control
             type="text"
-            required
+            /* required */
             placeholder="Purchase was made in?"
             value={itemInfo.name}
             onChange={(e) => setItemInfo({ ...itemInfo, name: e.target.value })}
@@ -39,7 +40,7 @@ function InputForm({ callBackAddItem }) {
           <Form.Label>Details: </Form.Label>
           <Form.Control
             type="text"
-            required
+            /* required */
             placeholder="Add comments..."
             value={itemInfo.detail}
             onChange={(e) =>
@@ -53,7 +54,7 @@ function InputForm({ callBackAddItem }) {
           <Form.Label>Date: </Form.Label>
           <Form.Control
             type="date"
-            required
+            /* required */
             value={itemInfo.date}
             onChange={(e) => setItemInfo({ ...itemInfo, date: e.target.value })}
           ></Form.Control>
@@ -65,6 +66,7 @@ function InputForm({ callBackAddItem }) {
             type="number"
             min="0"
             required
+            step="0.01"
             value={itemInfo.amount}
             onChange={(e) =>
               setItemInfo({ ...itemInfo, amount: e.target.value })

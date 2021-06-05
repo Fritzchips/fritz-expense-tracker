@@ -4,8 +4,14 @@ import Button from "react-bootstrap/Button";
 
 function TableOutPut({ expenseList, requestListModify }) {
   const callBackHandler = (e) => {
-    expenseList.splice(e.target, 1);
-    requestListModify([...expenseList]);
+    let childList = [...expenseList];
+    console.log("childfirst: ", childList);
+    /*  let index = childList.indexOf(e.currentTarget); */
+    console.log("index: ", e.currentTarget);
+    childList.splice(e.currentTarget, 1);
+    console.log("childlast: ", childList);
+    console.log("childlast: ", ...childList);
+    requestListModify([...childList]);
   };
 
   return (

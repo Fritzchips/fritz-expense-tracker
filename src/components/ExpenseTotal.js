@@ -4,14 +4,13 @@ import Button from "react-bootstrap/Button";
 
 function ExpenseTotal({ expenseList, requestListModify }) {
   const deleteAllItems = () => {
-    expenseList = [];
-    requestListModify(expenseList);
+    requestListModify([]);
   };
 
   let total = 0;
   if (expenseList) {
     expenseList.map((items) => {
-      return (total += parseInt(items.amount));
+      return (total += parseFloat(items.amount));
     });
   }
 
@@ -21,7 +20,7 @@ function ExpenseTotal({ expenseList, requestListModify }) {
         <td></td>
         <td>-Summary-</td>
         <td>Number of Items: {expenseList.length}</td>
-        <td>Total: $ {total}</td>
+        <td>Total: $ {parseFloat(total).toFixed(2)}</td>
         <td></td>
         <td>
           <Button variant="danger" onClick={deleteAllItems}>

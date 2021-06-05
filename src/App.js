@@ -16,6 +16,7 @@ function App() {
   useEffect(() => {
     if (expenseList) {
       localStorage.setItem("list", JSON.stringify(expenseList));
+      console.log("item was added");
     }
   }, [expenseList]);
 
@@ -24,9 +25,9 @@ function App() {
   };
 
   const addNewItem = (childInfo) => {
-    !expenseList
-      ? setExpenseList([childInfo])
-      : setExpenseList([...expenseList, childInfo]);
+    expenseList
+      ? setExpenseList([...expenseList, childInfo])
+      : setExpenseList([childInfo]);
   };
 
   return (
