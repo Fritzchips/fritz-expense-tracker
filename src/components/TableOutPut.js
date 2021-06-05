@@ -3,8 +3,8 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Button from "react-bootstrap/Button";
 
 function TableOutPut({ expenseList, requestListModify }) {
-  const callBackHandler = (e) => {
-    expenseList.splice(e, 1);
+  const callBackHandler = (index) => {
+    expenseList.splice(index, 1);
     requestListModify([...expenseList]);
   };
 
