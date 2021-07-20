@@ -3,7 +3,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Button from "react-bootstrap/Button";
 
 function TableOutPut({ expenseList, requestListModify }) {
-  const callBackHandler = (index) => {
+  const removeSingleItem = (index) => {
     expenseList.splice(index, 1);
     requestListModify([...expenseList]);
   };
@@ -22,7 +22,7 @@ function TableOutPut({ expenseList, requestListModify }) {
               <td>
                 <Button
                   variant="warning"
-                  onClick={() => callBackHandler(index)}
+                  onClick={() => removeSingleItem(index)}
                 >
                   Delete
                 </Button>
