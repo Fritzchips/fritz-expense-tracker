@@ -1,37 +1,32 @@
 import React from "react";
 import Table from "react-bootstrap/Table";
-import TableOutPut from "./TableOutPut";
+import ExpenseRow from "./ExpenseRow";
 import ExpenseTotal from "./ExpenseTotal";
 
-function TableContainer({ expenseList, tableListChange }) {
-  const sendTableChanges = (childList) => tableListChange(childList);
-
+function ExpenseTable({ expenseList, setExpenseList }) {
   return (
     <Table variant="dark">
       <thead>
         <tr className="table-header">
           <th>Name</th>
           <th>Date</th>
-          <th>Type</th>
+          <th>Payment Type</th>
           <th>Amount</th>
-          <th>Detail</th>
+          <th>Location</th>
           <th></th>
         </tr>
       </thead>
       <tbody>
-        <TableOutPut
-          requestListModify={sendTableChanges}
-          expenseList={expenseList}
-        />
+        <ExpenseRow setExpenseList={setExpenseList} expenseList={expenseList} />
       </tbody>
       <tfoot>
         <ExpenseTotal
-          requestListModify={sendTableChanges}
           expenseList={expenseList}
+          setExpenseList={setExpenseList}
         />
       </tfoot>
     </Table>
   );
 }
 
-export default TableContainer;
+export default ExpenseTable;

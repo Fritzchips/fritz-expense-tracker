@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./App.css";
 import InputForm from "./components/InputForm";
 import Container from "react-bootstrap/Container";
-import TableContainer from "./components/TableContainer";
+import ExpenseTable from "./components/ExpenseTable";
 
 function App() {
   const [expenseList, setExpenseList] = useState([]);
@@ -19,25 +19,15 @@ function App() {
     }
   }, [expenseList]);
 
-  const removeTableValue = (childList) => {
-    setExpenseList([...childList]);
-  };
-
-  const addNewItem = (childInfo) => {
-    expenseList
-      ? setExpenseList([...expenseList, childInfo])
-      : setExpenseList([childInfo]);
-  };
-
   return (
     <div className="App">
       <Container>
         <h1 className="text-center head-modify">Expense Tracker</h1>
-        <InputForm callBackAddItem={addNewItem} />
+        <InputForm expenseList={expenseList} setExpenseList={setExpenseList} />
         <br></br>
-        <TableContainer
+        <ExpenseTable
           expenseList={expenseList}
-          tableListChange={removeTableValue}
+          setExpenseList={setExpenseList}
         />
       </Container>
     </div>

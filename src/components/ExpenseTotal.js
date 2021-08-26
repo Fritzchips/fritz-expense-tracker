@@ -2,8 +2,8 @@ import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Button from "react-bootstrap/Button";
 
-function ExpenseTotal({ expenseList, requestListModify }) {
-  const deleteAllItems = () => requestListModify([]);
+function ExpenseTotal({ expenseList, setExpenseList }) {
+  const deleteAllItems = () => setExpenseList([]);
 
   let totalExpenses = 0;
   if (expenseList) {
@@ -16,7 +16,7 @@ function ExpenseTotal({ expenseList, requestListModify }) {
     <>
       <tr className="font-italic table-total">
         <td></td>
-        <td>-Summary-</td>
+        <td>Summary </td>
         <td>Number of Items: {expenseList.length}</td>
         <td>Total: $ {parseFloat(totalExpenses).toFixed(2)}</td>
         <td></td>

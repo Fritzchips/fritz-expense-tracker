@@ -5,46 +5,53 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 
-function InputForm({ callBackAddItem }) {
-  const blankForm = {
-    id: Date.now(),
-    name: "",
-    date: "",
-    amount: "",
-    payment: "Cash",
-    detail: "",
-  };
-  const [itemInfo, setItemInfo] = useState(blankForm);
+function InputForm({ expenseList, setExpenseList }) {
+  const [itemName, setItemName] = useState("");
+  const [date, setDate] = useState("");
+  const [amount, setAmount] = useState(0);
+  const [paymentType, setPaymentType] = useState("Cash");
+  const [location, setLocation] = useState("");
 
   const submitHandler = (e) => {
     e.preventDefault();
-    callBackAddItem(itemInfo);
-    setItemInfo(blankForm);
+    const newExpense = {
+      id: Date.now(),
+      itemName,
+      date,
+      amount,
+      paymentType,
+      location,
+    };
+
+    setExpenseList([...expenseList, newExpense]);
+    setItemName("");
+    setDate("");
+    setAmount(0);
+    setPaymentType("Cash");
+    setLocation("");
   };
 
   return (
     <Form onSubmit={submitHandler}>
       <Row>
         <Form.Group as={Col} controlId="formName">
-          <Form.Label>Name: </Form.Label>
+          <Form.Label>Item Name: </Form.Label>
           <Form.Control
             type="text"
             required
             placeholder="Purchase was made in?"
-            value={itemInfo.name}
-            onChange={(e) => setItemInfo({ ...itemInfo, name: e.target.value })}
+            value={itemName}
+            onChange={(e) => setItemName(e.target.value)}
           ></Form.Control>
         </Form.Group>
-        <Form.Group as={Col} controlId="formDetail">
-          <Form.Label>Details: </Form.Label>
+        <Form.Group as={Col} controlId="formLocation">
+          <Form.Label>Location: </Form.Label>
           <Form.Control
             type="text"
             required
             placeholder="Add comments..."
-            value={itemInfo.detail}
-            onChange={(e) =>
-              setItemInfo({ ...itemInfo, detail: e.target.value })
-            }
+            value={location}
+            onChange={(e) => setLocation(e.target.value)}
           ></Form.Control>
         </Form.Group>
       </Row>
@@ -54,8 +61,8 @@ function InputForm({ callBackAddItem }) {
           <Form.Control
             type="date"
             required
-            value={itemInfo.date}
-            onChange={(e) => setItemInfo({ ...itemInfo, date: e.target.value })}
+            value={date}
+            onChange={(e) => setDate(e.target.value)}
           ></Form.Control>
         </Form.Group>
 
@@ -66,21 +73,17 @@ function InputForm({ callBackAddItem }) {
             min="0"
             required
             step="0.01"
-            value={itemInfo.amount}
-            onChange={(e) =>
-              setItemInfo({ ...itemInfo, amount: e.target.value })
-            }
+            value={amount}
+            onChange={(e) => setAmount(e.target.value)}
           ></Form.Control>
         </Form.Group>
 
         <Form.Group as={Col} controlId="formType">
-          <Form.Label>Type: </Form.Label>
+          <Form.Label>Payment Type: </Form.Label>
           <Form.Control
             as="select"
-            value={itemInfo.payment}
-            onChange={(e) =>
-              setItemInfo({ ...itemInfo, payment: e.target.value })
-            }
+            value={paymentType}
+            onChange={(e) => setPaymentType(e.target.value)}
           >
             <option value="Cash">Cash</option>
             <option value="Master Card">Master Card</option>
