@@ -5,7 +5,7 @@ import ExpenseTotal from "./ExpenseTotal";
 
 function ExpenseTable({ expenseList, setExpenseList }) {
   return (
-    <Table variant="dark">
+    <Table variant="dark" id="expense-table">
       <thead>
         <tr className="table-header">
           <th>Name</th>

@@ -32,24 +32,24 @@ function InputForm({ expenseList, setExpenseList }) {
   };
 
   return (
-    <Form onSubmit={submitHandler}>
+    <Form onSubmit={submitHandler} id="expense-input-form">
       <Row>
         <Form.Group as={Col} controlId="formName">
-          <Form.Label>Item Name: </Form.Label>
+          <Form.Label id="label-name">Item Name: </Form.Label>
           <Form.Control
             type="text"
             required
-            placeholder="Purchase was made in?"
+            placeholder="What did you buy?"
             value={itemName}
             onChange={(e) => setItemName(e.target.value)}
           ></Form.Control>
         </Form.Group>
         <Form.Group as={Col} controlId="formLocation">
-          <Form.Label>Location: </Form.Label>
+          <Form.Label id="label-location">Location: </Form.Label>
           <Form.Control
             type="text"
             required
-            placeholder="Add comments..."
+            placeholder="Where did you buy it?"
             value={location}
             onChange={(e) => setLocation(e.target.value)}
           ></Form.Control>
@@ -57,7 +57,7 @@ function InputForm({ expenseList, setExpenseList }) {
       </Row>
       <Row>
         <Form.Group as={Col} controlId="formDate">
-          <Form.Label>Date: </Form.Label>
+          <Form.Label id="label-date">Date: </Form.Label>
           <Form.Control
             type="date"
             required
@@ -67,7 +67,7 @@ function InputForm({ expenseList, setExpenseList }) {
         </Form.Group>
 
         <Form.Group as={Col} controlId="formAmount">
-          <Form.Label>Amount: </Form.Label>
+          <Form.Label id="label-amount">Amount: </Form.Label>
           <Form.Control
             type="number"
             min="0"
@@ -79,7 +79,7 @@ function InputForm({ expenseList, setExpenseList }) {
         </Form.Group>
 
         <Form.Group as={Col} controlId="formType">
-          <Form.Label>Payment Type: </Form.Label>
+          <Form.Label id="label-payment">Payment Type: </Form.Label>
           <Form.Control
             as="select"
             value={paymentType}
@@ -93,7 +93,9 @@ function InputForm({ expenseList, setExpenseList }) {
         </Form.Group>
       </Row>
       <div className="text-center ">
-        <Button type="submit">Add Expense</Button>
+        <Button type="submit" id="expense-submit-btn">
+          Add Expense
+        </Button>
       </div>
     </Form>
   );

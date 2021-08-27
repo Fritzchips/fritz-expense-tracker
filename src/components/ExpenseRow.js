@@ -12,7 +12,7 @@ function ExpenseRow({ expenseList, setExpenseList }) {
       {expenseList ? (
         expenseList.map((item) => (
           <React.Fragment key={item.id}>
-            <tr>
+            <tr className="expense-row">
               <td>{item.itemName}</td>
               <td>{item.date}</td>
               <td>{item.paymentType}</td>
@@ -22,6 +22,7 @@ function ExpenseRow({ expenseList, setExpenseList }) {
                 <Button
                   variant="warning"
                   onClick={() => deleteExpense(item.id)}
+                  id="expense-btn"
                 >
                   Delete
                 </Button>

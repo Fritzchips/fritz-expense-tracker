@@ -21,7 +21,7 @@ function ExpenseTotal({ expenseList, setExpenseList }) {
         <td>Total: $ {parseFloat(totalExpenses).toFixed(2)}</td>
         <td></td>
         <td>
-          <Button variant="danger" onClick={deleteAllItems}>
+          <Button variant="danger" onClick={deleteAllItems} id="delete-all-btn">
             Delete All
           </Button>
         </td>
